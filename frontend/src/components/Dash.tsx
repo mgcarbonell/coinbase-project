@@ -10,7 +10,7 @@ interface IOptions {
   maintainAspectRatio: boolean
 }
 
-const Dash = ({ price, data }) => {
+const Dash = ({ string: price, data }) => {
   const options: IOptions = {
     tooltips: {
       intersect: false,

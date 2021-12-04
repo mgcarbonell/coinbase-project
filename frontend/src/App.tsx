@@ -1,15 +1,18 @@
 import React, { FC, useState, useEffect, useRef } from "react"
 import Grid from "@mui/material/Grid"
+// import Dash from "./components/Dash"
+import CryptoAccordion from "./components/CryptoAccordion"
 import IPairs from "./interfaces/IPairs"
 import ISocketFeed from "./interfaces/ISocketFeed"
 import { formatData } from "./utils/formatData.util"
-
+import "./styles/style.css"
+import ProductModel from "./models/product.model"
 import axios, { AxiosResponse } from "axios"
 
 const App: FC = () => {
-  const [currencies, setCurrencies] = useState([])
-  const [pair, setPair] = useState("")
-  const [price, setprice] = useState("0.00")
+  const [currencies, setCurrencies] = useState<any[]>([])
+  const [pair, setPair] = useState<string>("")
+  const [price, setprice] = useState<string>("0.00")
   const [pastData, setPastData] = useState({})
 
   const ws: any = useRef(null)
@@ -17,13 +20,12 @@ const App: FC = () => {
   const url: string = `${process.env.REACT_APP_PRODUCT_API}`
 
   useEffect(() => {
-    // const url: string = `${process.env.REACT_APP_CURRENCY_API}`
     let pairs: IPairs
     ws.current = new WebSocket("wss://ws-feed.pro.coinbase.com")
     const apiCall = async () => {
-      await fetch(url)
-        .then((res: Response) => res.json())
-        .then((data: any) => (pairs = data))
+      let response = await axios.get(url)
+      const data = response.data
+      pairs = data
       let filtered = pairs.filter((pair: any) => {
         if (pair.quote_currency === "USD") {
           return pair
@@ -54,7 +56,7 @@ const App: FC = () => {
       return
     }
 
-    let msg: ISocketFeed = {
+    let msg = {
       type: "subscribe",
       product_ids: [pair],
       channels: ["ticker"],
@@ -84,14 +86,14 @@ const App: FC = () => {
     }
   }, [pair])
 
-  const handleSelect = (e) => {
+  const handleSelect = (e: any) => {
     let unsubMessage: ISocketFeed = {
       type: "unsubscribe",
       product_ids: [pair],
       channels: ["ticker"],
     }
 
-    let unsub = JSON.stringify(unsubMesssage)
+    let unsub = JSON.stringify(unsubMessage)
 
     ws.current.send(unsub)
 
@@ -99,8 +101,20 @@ const App: FC = () => {
   }
 
   return (
-    <div>
-      <Grid></Grid>
+    <div className="container">
+      {
+        <select name="currency" value={pair} onChange={handleSelect}>
+          {currencies.map((cur, idx) => {
+            return (
+              <option key={idx} value={cur.id}>
+                {cur.display_name}
+              </option>
+            )
+          })}
+        </select>
+      }
+      <h1> {pair}</h1>
+      <h2> {price} </h2>
     </div>
   )
 }
