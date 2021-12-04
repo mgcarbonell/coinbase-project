@@ -5,11 +5,13 @@ import IPairs from "./interfaces/ipairs.interface"
 import ISocketFeed from "./interfaces/isocketfeed.interface"
 import { formatData } from "./utils/formatData.util"
 import "./styles/style.css"
+import Selector from "./components/Select"
+import Dash from "./components/Dash"
 // import ProductModel from "./models/product.model"
 import axios, { AxiosResponse } from "axios"
 
-const App: FC = () => {
-  const [currencies, setCurrencies] = useState<any[]>([])
+const App: React.FC = () => {
+  const [currencies, setCurrencies] = useState<any[]>([]) // holds our currencies objects
   const [pair, setPair] = useState<string>("")
   const [price, setprice] = useState<string>("0.00")
   const [pastData, setPastData] = useState({})
@@ -19,19 +21,20 @@ const App: FC = () => {
   const url: string = `${process.env.REACT_APP_PRODUCT_API}`
 
   useEffect(() => {
-    let productPairs: IPairs[] = []
+    let pairs: IPairs[] = []
     ws.current = new WebSocket("wss://ws-feed.pro.coinbase.com")
     const apiCall = async () => {
       let response = await axios.get(url)
       const data = response.data
-      productPairs = data
-      let filtered = productPairs.filter((pair: any) => {
+      // console.log(`data`, data)
+      pairs = data
+      let filtered = pairs.filter((pair: any) => {
         if (pair.quote_currency === "USD") {
           return pair
         }
-        return "No pair"
+        return 0
       })
-
+      // console.log(filtered)
       filtered = filtered.sort((a: IPairs, b: IPairs) => {
         if (a.base_currency < b.base_currency) {
           return -1
@@ -41,8 +44,10 @@ const App: FC = () => {
         }
         return 0
       })
-
-      setCurrencies(filtered)
+      // map through filtered and set the state to filtered(i).base_currency
+      let filteredCurrency = filtered.map((cur) => cur)
+      console.log(`filteredCurrency`, filteredCurrency)
+      setCurrencies(filteredCurrency)
 
       first.current = true
     }
@@ -69,6 +74,7 @@ const App: FC = () => {
       let dataArr: object[] = []
       const res: AxiosResponse = await axios(historicData)
       const data = await res.data
+      // console.log(data)
       dataArr = data
       let formattedData = formatData(dataArr)
       return setPastData(formattedData)
@@ -103,17 +109,12 @@ const App: FC = () => {
     <div>
       <Navbar />
       <div className="container">
-        {
-          <select name="currency" value={pair} onChange={handleSelect}>
-            {currencies.map((cur, idx) => {
-              return (
-                <option key={idx} value={cur.id}>
-                  {cur.display_name}
-                </option>
-              )
-            })}
-          </select>
-        }
+        <Selector
+          data={currencies}
+          title={"left"}
+          change={handleSelect}
+        ></Selector>
+
         <h1> {pair}</h1>
         <h2> {price} </h2>
       </div>

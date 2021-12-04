@@ -5,6 +5,12 @@
   height: 100vh;
 }
 
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+}
 .chart-container {
   width: 80%;
   height: 100%;

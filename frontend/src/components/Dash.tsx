@@ -10,7 +10,12 @@ interface IOptions {
   maintainAspectRatio: boolean
 }
 
-const Dash = ({ string: price, data }) => {
+type Props = {
+  price: string
+  data: any
+}
+
+const Dash: React.FC<Props> = ({ price, data }) => {
   const options: IOptions = {
     tooltips: {
       intersect: false,

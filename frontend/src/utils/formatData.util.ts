@@ -12,8 +12,8 @@ export const formatData = (data: any) => {
     ],
   }
 
-  let dates = data.map((val: any[]) => {
-    const timeStamp: number = parseInt(val[0], 10)
+  let dates = data.map((val: any) => {
+    const timeStamp: number = val[0]
     let date: Date = new Date(timeStamp * 1000)
     let day: number = date.getDate()
     let month: number = date.getMonth() + 1
