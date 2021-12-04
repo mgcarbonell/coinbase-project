@@ -10,3 +10,49 @@
 [34m[39m
 [2021-12-03 00:41:51:4151] [34mhttp[39m: [34mGET /api/v1/favorite 200 441 - 11.395 ms[39m
 [34m[39m
+[2021-12-03 14:44:28:4428] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-03 14:44:28:4428] [32minfo[39m: [32mConnected to Postgres[39m
+[2021-12-03 14:44:33:4433] [34mhttp[39m: [34mGET /api/v1/currency/products 404 163 - 2.651 ms[39m
+[34m[39m
+[2021-12-03 14:45:05:455] [34mhttp[39m: [34mGET /api/v1/currency/products 404 163 - 1.188 ms[39m
+[34m[39m
+[2021-12-03 14:45:17:4517] [34mhttp[39m: [34mGET /api/v1/currency/products 404 163 - 0.472 ms[39m
+[34m[39m
+[2021-12-03 14:50:33:5033] [34mhttp[39m: [34mGET /api/v1/products 404 154 - 0.478 ms[39m
+[34m[39m
+[2021-12-03 14:51:42:5142] [34mhttp[39m: [34mGET /api/v1/products 404 154 - 0.380 ms[39m
+[34m[39m
+[2021-12-03 14:52:12:5212] [34mhttp[39m: [34mGET /api/v1/currency 200 1179 - 648.314 ms[39m
+[34m[39m
+[2021-12-03 14:52:31:5231] [34mhttp[39m: [34mGET /api/v1/currency 200 127 - 165.597 ms[39m
+[34m[39m
+[2021-12-03 14:53:08:538] [34mhttp[39m: [34mGET /api/v1/products 404 154 - 0.305 ms[39m
+[34m[39m
+[2021-12-03 14:53:39:5339] [34mhttp[39m: [34mGET /api/v1/products 404 154 - 0.489 ms[39m
+[34m[39m
+[2021-12-03 14:54:19:5419] [34mhttp[39m: [34mGET /api/v1/products 404 154 - 0.325 ms[39m
+[34m[39m
+[2021-12-03 14:54:30:5430] [34mhttp[39m: [34mGET /api/v1/products 404 154 - 0.667 ms[39m
+[34m[39m
+[2021-12-03 14:55:22:5522] [34mhttp[39m: [34mGET /api/v1/products 404 154 - 0.298 ms[39m
+[34m[39m
+[2021-12-03 14:56:03:563] [34mhttp[39m: [34mGET /api/v1/health/products 404 161 - 0.386 ms[39m
+[34m[39m
+[2021-12-03 15:06:21:621] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-03 15:06:21:621] [32minfo[39m: [32mConnected to Postgres[39m
+[2021-12-03 22:15:52:1552] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-03 22:15:52:1552] [31merror[39m: [31mconnect ECONNREFUSED ::1:5432[39m
+[2021-12-03 22:20:38:2038] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-03 22:20:38:2038] [32minfo[39m: [32mConnected to Postgres[39m
+[2021-12-03 22:20:53:2053] [34mhttp[39m: [34mGET /api/v1/products 200 176087 - 427.544 ms[39m
+[34m[39m
+[2021-12-03 22:21:23:2123] [34mhttp[39m: [34mGET /api/v1/products/BTC-USD 404 162 - 1.403 ms[39m
+[34m[39m
+[2021-12-03 22:22:29:2229] [34mhttp[39m: [34mGET /api/v1/products/ 200 176087 - 257.979 ms[39m
+[34m[39m
+[2021-12-03 23:53:32:5332] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-03 23:53:33:5333] [32minfo[39m: [32mConnected to Postgres[39m
+[2021-12-03 23:54:50:5450] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-03 23:54:51:5451] [32minfo[39m: [32mConnected to Postgres[39m
+[2021-12-03 23:55:29:5529] [34mhttp[39m: [34mPOST /api/v1/favorite 200 140 - 27.820 ms[39m
+[34m[39m
