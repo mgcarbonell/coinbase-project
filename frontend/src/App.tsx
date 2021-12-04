@@ -1,12 +1,11 @@
 import React, { FC, useState, useEffect, useRef } from "react"
+import Navbar from "./components/Navbar"
 import Grid from "@mui/material/Grid"
-// import Dash from "./components/Dash"
-import CryptoAccordion from "./components/CryptoAccordion"
-import IPairs from "./interfaces/IPairs"
-import ISocketFeed from "./interfaces/ISocketFeed"
+import IPairs from "./interfaces/ipairs.interface"
+import ISocketFeed from "./interfaces/isocketfeed.interface"
 import { formatData } from "./utils/formatData.util"
 import "./styles/style.css"
-import ProductModel from "./models/product.model"
+// import ProductModel from "./models/product.model"
 import axios, { AxiosResponse } from "axios"
 
 const App: FC = () => {
@@ -20,13 +19,13 @@ const App: FC = () => {
   const url: string = `${process.env.REACT_APP_PRODUCT_API}`
 
   useEffect(() => {
-    let pairs: IPairs
+    let productPairs: IPairs[] = []
     ws.current = new WebSocket("wss://ws-feed.pro.coinbase.com")
     const apiCall = async () => {
       let response = await axios.get(url)
       const data = response.data
-      pairs = data
-      let filtered = pairs.filter((pair: any) => {
+      productPairs = data
+      let filtered = productPairs.filter((pair: any) => {
         if (pair.quote_currency === "USD") {
           return pair
         }
@@ -101,20 +100,23 @@ const App: FC = () => {
   }
 
   return (
-    <div className="container">
-      {
-        <select name="currency" value={pair} onChange={handleSelect}>
-          {currencies.map((cur, idx) => {
-            return (
-              <option key={idx} value={cur.id}>
-                {cur.display_name}
-              </option>
-            )
-          })}
-        </select>
-      }
-      <h1> {pair}</h1>
-      <h2> {price} </h2>
+    <div>
+      <Navbar />
+      <div className="container">
+        {
+          <select name="currency" value={pair} onChange={handleSelect}>
+            {currencies.map((cur, idx) => {
+              return (
+                <option key={idx} value={cur.id}>
+                  {cur.display_name}
+                </option>
+              )
+            })}
+          </select>
+        }
+        <h1> {pair}</h1>
+        <h2> {price} </h2>
+      </div>
     </div>
   )
 }

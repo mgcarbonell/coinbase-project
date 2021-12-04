@@ -1,5 +1,5 @@
 import axios from "axios"
-import { IFavorite } from "../interfaces/IFavorite"
+import { IFavorite } from "../interfaces/ifavorite.interface"
 
 class FavoriteModel {
   static all = async () => {
