@@ -1,11 +1,16 @@
 import axios from "axios"
 import { IFavorite } from "../interfaces/ifavorite.interface"
 
+// class FavoriteModel {
+//   static all = () => {
+//     return fetch(`${process.env.REACT_APP_FAVORITE_URL}`)
+//   }
+// }
 class FavoriteModel {
   static all = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}`)
-      return response.data
+      const response = await axios.get(`${process.env.REACT_APP_FAVORITE_API}`)
+      return await response.data
     } catch (error) {
       throw error
     }
@@ -13,8 +18,10 @@ class FavoriteModel {
 
   static show = async (id: number) => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/${id}`)
-      return response.data
+      const response = await axios.get(
+        `${process.env.REACT_APP_FAVORITE_API}/${id}`
+      )
+      return await response.data
     } catch (error) {
       throw error
     }
@@ -23,10 +30,10 @@ class FavoriteModel {
   static create = async (data: IFavorite) => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}`,
+        `${process.env.REACT_APP_FAVORITE_API}`,
         data
       )
-      return response.data
+      return await response.data
     } catch (error) {
       throw error
     }
@@ -36,10 +43,10 @@ class FavoriteModel {
     try {
       const slug = note
       const response = await axios.put(
-        `${process.env.REACT_APP_API_URL}/${id}`,
+        `${process.env.REACT_APP_FAVORITE_API}/${id}`,
         slug
       )
-      return response.data
+      return await response.data
     } catch (error) {
       throw error
     }
@@ -48,9 +55,9 @@ class FavoriteModel {
   static delete = async (id: number) => {
     try {
       const response = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/${id}`
+        `${process.env.REACT_APP_FAVORITE_API}/${id}`
       )
-      return response.data
+      return await response.data
     } catch (error) {
       throw error
     }

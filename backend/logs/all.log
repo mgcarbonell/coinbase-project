@@ -56,3 +56,37 @@
 [2021-12-03 23:54:51:5451] [32minfo[39m: [32mConnected to Postgres[39m
 [2021-12-03 23:55:29:5529] [34mhttp[39m: [34mPOST /api/v1/favorite 200 140 - 27.820 ms[39m
 [34m[39m
+[2021-12-04 22:24:53:2453] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-04 22:24:53:2453] [31merror[39m: [31mconnect ECONNREFUSED ::1:5432[39m
+[2021-12-04 22:25:16:2516] [32minfo[39m: [32mYou are now listening to the smooth sounds of port: 4000[39m
+[2021-12-04 22:25:16:2516] [32minfo[39m: [32mConnected to Postgres[39m
+[2021-12-04 22:29:40:2940] [34mhttp[39m: [34mGET /api/v1/favorite 200 582 - 42.105 ms[39m
+[34m[39m
+[2021-12-04 22:29:57:2957] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 12.106 ms[39m
+[34m[39m
+[2021-12-04 22:30:50:3050] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 24.067 ms[39m
+[34m[39m
+[2021-12-04 22:30:53:3053] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 3.726 ms[39m
+[34m[39m
+[2021-12-04 22:31:10:3110] [34mhttp[39m: [34mGET /api/v1/favorite - - - - ms[39m
+[34m[39m
+[2021-12-04 22:31:13:3113] [34mhttp[39m: [34mGET /api/v1/favorite 200 582 - 4.868 ms[39m
+[34m[39m
+[2021-12-04 22:32:00:320] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 6.516 ms[39m
+[34m[39m
+[2021-12-04 22:32:50:3250] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 11.679 ms[39m
+[34m[39m
+[2021-12-04 22:33:46:3346] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 21.317 ms[39m
+[34m[39m
+[2021-12-04 22:34:12:3412] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 14.484 ms[39m
+[34m[39m
+[2021-12-04 22:38:17:3817] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 19.440 ms[39m
+[34m[39m
+[2021-12-04 22:53:09:539] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 21.211 ms[39m
+[34m[39m
+[2021-12-04 22:54:26:5426] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 20.795 ms[39m
+[34m[39m
+[2021-12-04 22:55:56:5556] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 8.620 ms[39m
+[34m[39m
+[2021-12-04 22:56:56:5656] [34mhttp[39m: [34mGET /api/v1/favorite 304 - - 49.052 ms[39m
+[34m[39m

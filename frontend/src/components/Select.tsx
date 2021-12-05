@@ -17,7 +17,7 @@ const Selector: React.FC<Props> = ({ title, data, change }) => {
   return (
     <div>
       <FormControl fullWidth>
-        <InputLabel>Coin</InputLabel>
+        <InputLabel>{title}</InputLabel>
         <Select label="Coin" onChange={(e) => change(e)}>
           {data.map((item, index) => (
             <MenuItem value={item.id} key={item.id + index}>
