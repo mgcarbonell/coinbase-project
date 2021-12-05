@@ -3,17 +3,21 @@ import Navbar from "./components/Navbar"
 import Grid from "@mui/material/Grid"
 import IPairs from "./interfaces/ipairs.interface"
 import ISocketFeed from "./interfaces/isocketfeed.interface"
+// import IDetails from "./interfaces/idetails.interface"
 import { formatData } from "./utils/formatData.util"
 import "./styles/style.css"
 import Selector from "./components/Select"
 import Dash from "./components/Dash"
 // import ProductModel from "./models/product.model"
 import axios, { AxiosResponse } from "axios"
+import PropTypes from "prop-types"
 
 const App: React.FC = () => {
   const [currencies, setCurrencies] = useState<any[]>([]) // holds our currencies objects
   const [pair, setPair] = useState<string>("")
+  const [value, setValue] = useState<string>("")
   const [price, setprice] = useState<string>("0.00")
+  const [productDetails, setProductDetails] = useState<object>({})
   const [pastData, setPastData] = useState({})
 
   const ws: any = useRef(null)
@@ -46,7 +50,7 @@ const App: React.FC = () => {
       })
       // map through filtered and set the state to filtered(i).base_currency
       let filteredCurrency = filtered.map((cur) => cur)
-      console.log(`filteredCurrency`, filteredCurrency)
+      // console.log(`filteredCurrency`, filteredCurrency)
       setCurrencies(filteredCurrency)
 
       first.current = true
@@ -69,17 +73,6 @@ const App: React.FC = () => {
     let jsonMsg: string = JSON.stringify(msg)
     ws.current.send(jsonMsg)
 
-    let historicData: string = `${process.env.REACT_APP_PRODUCT_API}/${pair}/candles?granularity=86400`
-    const fetchHistoricData = async () => {
-      let dataArr: object[] = []
-      const res: AxiosResponse = await axios(historicData)
-      const data = await res.data
-      // console.log(data)
-      dataArr = data
-      let formattedData = formatData(dataArr)
-      return setPastData(formattedData)
-    }
-    fetchHistoricData()
     ws.current.onmessage = (event: any) => {
       let data = JSON.parse(event.data)
       if (data.type !== "ticker") {
@@ -105,18 +98,38 @@ const App: React.FC = () => {
     setPair(e.target.value)
   }
 
+  const makeCall = async (e: any) => {
+    e.preventDefault()
+    // console.log(`e from app => `, e.target.value)
+    const response = await axios.get(
+      `${process.env.REACT_APP_PRODUCT_API}/${
+        e.target.value === null ? "BTC-USD" : e.target.value
+      }/stats`
+    )
+    const data = await response.data
+    // let toState: IDetails = {
+    //   high: data.high,
+    //   last: data.last,
+    //   low: data.low,
+    //   open: data.open,
+    //   volume: data.volume,
+    //   volume_30day: data.volume_30day,
+    // }
+    console.log(`data from app => `, typeof data, data)
+
+    setProductDetails(data)
+    setValue(e.target.value)
+  }
   return (
     <div>
       <Navbar />
       <div className="container">
-        <Selector
-          data={currencies}
-          title={"left"}
-          change={handleSelect}
-        ></Selector>
-
-        <h1> {pair}</h1>
-        <h2> {price} </h2>
+        <Selector data={currencies} title={"left"} change={makeCall}></Selector>
+        {Object.keys(productDetails).length > 0 ? (
+          <Dash details={productDetails} />
+        ) : (
+          <h1>No Details</h1>
+        )}
       </div>
     </div>
   )
