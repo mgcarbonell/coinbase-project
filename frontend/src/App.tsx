@@ -91,12 +91,7 @@ const App: React.FC = () => {
         <Grid>
           {Object.keys(productDetails).length > 0 ? (
             <>
-              <Dash
-                title={value}
-                details={productDetails}
-                favorites={favorites}
-                setFavorites={setFavorites}
-              />
+              <Dash title={value} details={productDetails} />
             </>
           ) : (
             <h1>No Details</h1>
@@ -105,7 +100,7 @@ const App: React.FC = () => {
         <Grid>
           {favorites.length > 0 ? (
             <>
-              <FavoriteList favorites={favorites} />
+              <FavoriteList setFavorites={setFavorites} favorites={favorites} />
             </>
           ) : (
             <p>You should like some cryptos.</p>

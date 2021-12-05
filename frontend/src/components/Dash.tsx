@@ -20,10 +20,8 @@ interface Prop {
     volume_30day?: string
   }
   title?: string
-  favorites?: any[]
-  setFavorites?: any[]
 }
-const Dash: React.FC<Prop> = ({ details, title, favorites, setFavorites }) => {
+const Dash: React.FC<Prop> = ({ details, title }) => {
   const [favorite] = useState()
   // const [name, setName] = useState<string>("")
   // const [price, setPrice] = useState<object>({})
@@ -52,12 +50,7 @@ const Dash: React.FC<Prop> = ({ details, title, favorites, setFavorites }) => {
   const handleFavorite = (e: any) => {
     e.preventDefault()
     let cryptoName = title
-    FavoriteModel.create({ cryptoName }).then(
-      setFavorites(
-        favorites.filter((favorite) => favorite.cryptoName !== cryptoName)
-      )
-    )
-    console.log("DING")
+    FavoriteModel.create({ cryptoName })
   }
 
   if (!details) {

@@ -1,11 +1,5 @@
 import axios from "axios"
-import { IFavorite } from "../interfaces/ifavorite.interface"
 
-// class FavoriteModel {
-//   static all = () => {
-//     return fetch(`${process.env.REACT_APP_FAVORITE_URL}`)
-//   }
-// }
 class FavoriteModel {
   static all = async () => {
     try {
@@ -55,7 +49,7 @@ class FavoriteModel {
   static delete = async (id: number) => {
     try {
       const response = await axios.delete(
-        `${process.env.REACT_APP_FAVORITE_API}/${id}`
+        process.env.REACT_APP_FAVORITE_API + "/" + id
       )
       return await response.data
     } catch (error) {
