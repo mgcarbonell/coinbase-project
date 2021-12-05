@@ -54,7 +54,7 @@ curl copperprop.herokuapp.com/api/v1/health
 ```
 
 ```json
-{"sanityCheck:"sane"}
+{ "sanityCheck": "sane" }
 ```
 
 Once we have queried the server status to see if it is running, we can query the favorites ALL end point:
