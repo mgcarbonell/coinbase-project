@@ -20,5 +20,3 @@ export = {
     migrationsDir: "src/migrations",
   },
 } as ConnectionOptions
-
-// courtesy of Tigran in Tech
