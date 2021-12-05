@@ -7,7 +7,8 @@ import {
   Typography,
   Button,
 } from "@mui/material"
-import { Favorite } from "@mui/icons-material"
+import { Favorite, FavoriteSharp } from "@mui/icons-material"
+import FavoriteModel from "../models/favorites.model"
 
 interface Prop {
   details: {
@@ -18,9 +19,13 @@ interface Prop {
     volume?: string
     volume_30day?: string
   }
+  title?: string
+  favorites?: any[]
+  setFavorites?: any[]
 }
-const Dash: React.FC<Prop> = ({ details }) => {
-  const [name, setName] = useState<string>("")
+const Dash: React.FC<Prop> = ({ details, title, favorites, setFavorites }) => {
+  const [favorite] = useState()
+  // const [name, setName] = useState<string>("")
   // const [price, setPrice] = useState<object>({})
 
   const returnPercent = () => {
@@ -38,13 +43,22 @@ const Dash: React.FC<Prop> = ({ details }) => {
     )
   }
 
-  // useEffect(() => {
-  //   // console.log(`details from dash => `, details)
-  //   // setName(pair.substring(pair.indexOf("-")))
-  //   // setPrice(details)
-  // }, [details])
+  useEffect(() => {
+    console.log(`title from dash => `, title)
+    // setName(pair.substring(pair.indexOf("-")))
+    // setPrice(details)
+  }, [title])
 
-  const handleFavorite = () => {}
+  const handleFavorite = (e: any) => {
+    e.preventDefault()
+    let cryptoName = title
+    FavoriteModel.create({ cryptoName }).then(
+      setFavorites(
+        favorites.filter((favorite) => favorite.cryptoName !== cryptoName)
+      )
+    )
+    console.log("DING")
+  }
 
   if (!details) {
     return <h1>no details</h1>
@@ -55,12 +69,14 @@ const Dash: React.FC<Prop> = ({ details }) => {
           <CardContent>
             <Grid xs={12}>
               <Grid item xs={4}>
-                <Typography variant={"h2"}>
+                <Typography component={"h2"} variant={"h2"}>
                   ${parseFloat(details.last!)}
                   {returnPercent()}
                 </Typography>
-                <Typography variant={"h4"}>
+                <Typography component={"p"} variant={"h4"}>
                   24h High: {details.high}
+                </Typography>
+                <Typography component={"p"} variant={"h4"}>
                   24h Low: {details.low}
                 </Typography>
               </Grid>
@@ -68,7 +84,7 @@ const Dash: React.FC<Prop> = ({ details }) => {
               <Grid item xs={4}></Grid>
             </Grid>
           </CardContent>
-          <Button onClick={handleSubmit}>
+          <Button onClick={handleFavorite}>
             <Favorite />
           </Button>
         </Card>

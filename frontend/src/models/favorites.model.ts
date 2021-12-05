@@ -27,7 +27,7 @@ class FavoriteModel {
     }
   }
 
-  static create = async (data: IFavorite) => {
+  static create = async (data) => {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_FAVORITE_API}`,

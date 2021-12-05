@@ -12,7 +12,7 @@ import PropTypes from "prop-types"
 import FavoriteModel from "./models/favorites.model"
 
 const App: React.FC = () => {
-  const [currencies, setCurrencies] = useState<any[]>([]) // holds our currencies objects
+  const [currencies, setCurrencies] = useState<any[]>([])
   const [pair, setPair] = useState<string>("")
   const [value, setValue] = useState<string>("")
   const [price, setprice] = useState<string>("0.00")
@@ -91,7 +91,12 @@ const App: React.FC = () => {
         <Grid>
           {Object.keys(productDetails).length > 0 ? (
             <>
-              <Dash details={productDetails} />
+              <Dash
+                title={value}
+                details={productDetails}
+                favorites={favorites}
+                setFavorites={setFavorites}
+              />
             </>
           ) : (
             <h1>No Details</h1>
