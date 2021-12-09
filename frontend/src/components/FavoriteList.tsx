@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react"
-import { Grid, Paper, Divider, Typography, IconButton } from "@mui/material"
+import { Grid, Typography, IconButton } from "@mui/material"
+import { makeStyles } from "@mui/styles"
 import DeleteIcon from "@mui/icons-material/Delete"
 import EditIcon from "@mui/icons-material/Edit"
 import FavoriteModel from "../models/favorites.model"
-// import { IFavorite } from "../interfaces/ifavorite.interface"
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    margin: "0 auto",
+    maxWidth: "100%",
+  },
+}))
+
 const FavoriteList = ({ favorites, setFavorites }) => {
-  const [note, setNote] = useState<string>("")
+  // const [note, setNote] = useState<string>("")
   useEffect(() => {
     console.log(`favorites from favoritelist =>`, favorites)
   }, [favorites])

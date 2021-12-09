@@ -7,15 +7,14 @@ import "./styles/style.css"
 import Selector from "./components/Select"
 import Dash from "./components/Dash"
 import FavoriteList from "./components/FavoriteList"
-import axios, { AxiosResponse } from "axios"
-import PropTypes from "prop-types"
+import axios from "axios"
 import FavoriteModel from "./models/favorites.model"
 
 const App: React.FC = () => {
   const [currencies, setCurrencies] = useState<any[]>([])
   const [pair, setPair] = useState<string>("")
   const [value, setValue] = useState<string>("")
-  const [price, setprice] = useState<string>("0.00")
+  // const [price, setprice] = useState<string>("0.00")
   const [name, setName] = useState<string>("")
   const [productDetails, setProductDetails] = useState<object>({})
   const [favorites, setFavorites] = useState<
