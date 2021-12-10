@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from "react"
-import {
-  InputLabel,
-  MenuItem,
-  FormHelperText,
-  FormControl,
-} from "@mui/material"
-import Select, { SelectChangeEvent } from "@mui/material/Select"
-import { AnyRecord } from "dns"
+import React from "react"
+import { InputLabel, MenuItem, FormControl } from "@mui/material"
+import Select from "@mui/material/Select"
 
 interface Props {
   data: any[]

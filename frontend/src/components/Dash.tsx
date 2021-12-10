@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react"
-import {
-  Grid,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-  Button,
-} from "@mui/material"
-import { Favorite, FavoriteSharp } from "@mui/icons-material"
+import { Grid, Card, CardContent, Typography, Button } from "@mui/material"
+import { Favorite } from "@mui/icons-material"
 import FavoriteModel from "../models/favorites.model"
 
 interface Prop {
