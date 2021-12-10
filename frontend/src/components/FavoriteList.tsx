@@ -28,7 +28,7 @@ const FavoriteList = ({ favorites, setFavorites }) => {
   return (
     <div>
       <Typography component="h2" variant="h5">
-        Favorited Coins
+        Favorite Coins
       </Typography>
       {favorites.map((item) => (
         <Grid container>
